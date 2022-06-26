@@ -1,6 +1,5 @@
 /*
 抓https://miniapi.tianwensk.com/miniapp  里面得userid
-
 export ttlcookie='xxxxxxxxxx'
 多账号换行或者@
 */
