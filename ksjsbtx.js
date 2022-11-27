@@ -1,16 +1,11 @@
-/*
-   最大化提现变量：ksjsbAggressive  0代表按列表提现，1代表最大化提现
-*/
-
-
-const $ = new Env('最大化提现(paolu)');
+const $ = new Env('快手极速版提现');
 let res,
   ksjsbCookie = process.env.ksjsbCookie || '',
   Users = [],
   ksjsbCash = process.env.ksjsbCash || '',
   //ksjsbWithdrawTime = process.env.ksjsbWithdrawTime || 15,
   ksjsbAggressive = process.env.ksjsbAggressive || 0,
-  ksjsbNotify = process.env.ksjsbNotify || 1,
+  ksjsbNotify = process.env.ksjsbNotify || 0,
   index = 0,
   count = 0;
 
@@ -271,7 +266,7 @@ let res,
       return;
     }
 
-    let _0x1fdd87 = _0x1bd22f == 0 ? '自动兑换' : '手动兑换';
+    let _0x1fdd87 = _0x1bd22f == 1 ? '自动兑换' : '手动兑换';
 
     _0x4df55c.result == 1
       ? console.log(
