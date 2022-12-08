@@ -2,11 +2,15 @@
 import requests, random, string, hashlib, time, json
 from json import dumps
 
-#爱奇艺cookie  分别提取
-P00001=""
-P00003=""
-dfp=""#只要‘字符串‘，删除’@数字@数字’
-
+aqyck = os.environ.get("aqyck") if os.environ.get("aqyck") else ""
+dfp = os.environ.get("iqiyi_dfp") if os.environ.get("iqiyi_dfp") else ""
+#检测账号
+if not aqyck or "&" not in aqyck:
+    print("⚠️未发现有效账号,退出程序!")
+    sys.exit()
+P00001 = aqyck.split('&')[0]
+P00003 = aqyck.split('&')[1]
+#print(P00001,P00003,dfp)  
 
 # 任务列表
 tasks = []
