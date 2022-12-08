@@ -1,9 +1,21 @@
-import requests, json ,time,base64,binascii,hashlib
+"""
+const $ = new Env("小米社区任务");
+cron: 5 8 * * *
+"""
+#变量
+import requests, json ,time,base64,binascii,hashlib,os
+#from sendNotify import send
 
-# 小米签到
-# 配置帐号密码 一一对应 按需增删 不对上会出错
-account =['帐号1','帐号2','账号3']
-password =['密码1','密码2','密码3']
+xiaomi = os.environ.get("xiaomi") if os.environ.get("xiaomi") else ""
+
+if not xiaomi or "&" not in xiaomi:
+    print("⚠️未发现有效账号,退出程序!")
+    sys.exit()
+test = xiaomi.split('&')[0]
+test2 = xiaomi.split('&')[1]
+account = ([test])
+password = ([test2])
+#print(account,password)     
 
 # 获取cookie
 def Phone(account, password):
@@ -134,5 +146,5 @@ for i in range(len(account)):
             print('浏览帖子成功，获得积分： ' + str(result_watch['entity']['score']))
         else:
             print(result_watch['message'] + '，今日已达上限')
-    print('等待1min执行下一个帐号')
-    time.sleep(60)
+    #print('等待1min执行下一个帐号')
+    #time.sleep(60)
