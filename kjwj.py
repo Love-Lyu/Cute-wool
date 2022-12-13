@@ -1,4 +1,4 @@
-import requests, json, re,os
+import requests,json,re,os
 #检测账号变量
 kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
 #检测账号
@@ -14,7 +14,7 @@ password = ([test2])
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
     headers = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.42',
         'origin': 'https://www.kejiwanjia.com',
         'referer': 'https://www.kejiwanjia.com/'
     }
@@ -35,16 +35,16 @@ for i in range(len(username)):
         'authorization': 'Bearer ' + f'{token}',
         'cookie': f'b2_token={token};',
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.42'
     }
     html_1 = requests.post(url=check_url, headers=sign_headers)
     imfo_1 = json.loads(html_1.text)
     if imfo_1['mission']['credit'] == 0:
         print("开始检查第"+str(i+1)+"个帐号"+ " " +  name +"签到")
-        print("还未签到 开始签到")
+        print("⚠️还未签到 开始签到")
         html_2 = requests.post(url=sign_url, headers=sign_headers)
         imfo_2 = json.loads(html_2.text)
         print("签到成功 获得" + imfo_2 + "积分")
     else:
         print("帐号" + str(i + 1) + " " + name )
-        print("今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
+        print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
