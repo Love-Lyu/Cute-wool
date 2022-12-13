@@ -1,13 +1,8 @@
-"""
-const $ = new Env("小米社区任务");
-cron: 5 8 * * *
-"""
-#变量
-import requests, json ,time,base64,binascii,hashlib,os
+import requests,json,time,base64,binascii,hashlib,os
 #from sendNotify import send
-
+#检测环境变量
 xiaomi = os.environ.get("xiaomi") if os.environ.get("xiaomi") else ""
-
+#检测账号
 if not xiaomi or "&" not in xiaomi:
     print("⚠️未发现有效账号,退出程序!")
     sys.exit()
@@ -80,11 +75,12 @@ for i in range(len(account)):
     result = json.loads(html.text)
     result_user = json.loads(html_user.text)
     userId = result_user['entity']['userId']
-    print('*************'+'\n'+f'开始第{i + 1}个账号签到'+'\n'+'签到结果：')
-    print('userId: '+userId + ' 用户名: '+result_user['entity']['userName']+ ' 段位: '+ result_user['entity']['userGrowLevelInfo']['showLevel'])
-    print(result['message'])
+    print('*************'+'\n'+f'🔁开始第{i + 1}个账号签到')
+    print('✅userId: '+userId + ' 用户名: '+result_user['entity']['userName']+ ' 段位: '+ result_user['entity']['userGrowLevelInfo']['showLevel'])
+    print('🔁签到结果：')
+    print('✅' + result['message'])
 # 点赞任务
-    print('开始加入点赞任务>>>>')
+    print('🔁开始加入点赞任务>>>>')
     for a in range(2):
         dzurl = 'https://api.vip.miui.com/mtop/planet/vip/content/announceThumbUp'
         dz_data = {
@@ -95,22 +91,22 @@ for i in range(len(account)):
         dz_html = requests.get(url=dzurl, headers=headers,data=dz_data)
         dz_result = json.loads(dz_html.text)
         if dz_result['status'] == 200:
-            print('点赞帖子成功成功')
+            print('✅点赞帖子成功成功')
         time.sleep(1)
 #加入圈子
-    print('开始加入圈子任务>>>>')
+    print('🔁开始加入圈子任务>>>>')
     unfollow_url = 'https://api.vip.miui.com/api/community/board/unfollow?boardId=558495'
     html_unfollow = requests.get(url=unfollow_url, headers=headers)
     result_unfollow = json.loads(html_user.text)
     if result_unfollow['status']==200:
-        print('退出圈子成功')
+        print('✅退出圈子成功')
     time.sleep(1)
 
     follow_url = 'https://api.vip.miui.com/api/community/board/follow?boardId=558495'
     html_follow = requests.get(url=follow_url, headers=headers)
     result_follow = json.loads(html_user.text)
     if result_follow['status']==200:
-        print('加入圈子成功')
+        print('✅加入圈子成功')
     time.sleep(1)
 
 # 浏览主页
@@ -119,23 +115,23 @@ for i in range(len(account)):
     time.sleep(12)
     result_info = json.loads(html_info.text)
     if result_info['status'] == 200:
-        print('浏览主页成功，获得积分： '+str(result_info['entity']['score']))
+        print('✅浏览主页成功，获得积分： '+str(result_info['entity']['score']))
     else:
-        print(result_info['message']+'，今日已达上限')
+        print(result_info['message']+'，今日已达上限⚠️')
 #浏览专题
-    print('开始浏览专题任务>>>>')
+    print('🔁开始浏览专题任务>>>>')
     llzt_url = f'https://api.vip.miui.com/mtop/planet/vip/member/addCommunityGrowUpPointByAction?userId={userId}&action=BROWSE_SPECIAL_PAGES_SPECIAL_PAGE'
     html_llzt = requests.get(url=llzt_url, headers=headers)
     time.sleep(12)
     result_llzt = json.loads(html_llzt.text)
     # print(result_llzt)
     if result_llzt['status'] == 200:
-        print('浏览主页成功，获得积分： '+str(result_llzt['entity']['score']))
+        print('✅浏览主页成功，获得积分： '+str(result_llzt['entity']['score']))
     else:
-        print(result_llzt['message']+'，今日已达上限')
+        print(result_llzt['message']+'，今日已达上限⚠️')
 
 #浏览帖子
-    print('开始浏览帖子任务>>>>')
+    print('🔁开始浏览帖子任务>>>>')
     for a in range(3):
         watch_url = f'https://api.vip.miui.com/mtop/planet/vip/member/addCommunityGrowUpPointByAction?userId={userId}&action=BROWSE_POST_10S'
         html_watch = requests.get(url=watch_url, headers=headers)
@@ -143,8 +139,8 @@ for i in range(len(account)):
         result_watch = json.loads(html_watch.text)
         # print(result_watch)
         if result_watch['status'] == 200:
-            print('浏览帖子成功，获得积分： ' + str(result_watch['entity']['score']))
+            print('✅浏览帖子成功，获得积分： ' + str(result_watch['entity']['score']))
         else:
-            print(result_watch['message'] + '，今日已达上限')
+            print(result_watch['message'] + '，今日已达上限⚠️' + '\n' + '*************')
     #print('等待1min执行下一个帐号')
     #time.sleep(60)
