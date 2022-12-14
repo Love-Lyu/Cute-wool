@@ -1,14 +1,9 @@
-"""
-const $ = new Env("星空代理签到");
-cron: 10 00 * * *
-"""
-# 变量 export xingkong="账户1:密码&账户2:密码"
+#星空代理-签到
+#环境变量 xingkong="账户1:密码&账户2:密码"
 import os
 import re
 from datetime import datetime
-
 import requests
-
 from sendNotify import send
 
 try:
@@ -31,10 +26,10 @@ try:
     params = {
         'action': 'user_receive_point',
     }
-    # 按照空格分隔多个账户
+    # 按照&分隔多个账户
     accounts = xingkong.split("&")
     for i in accounts:
-        up = i.split(":")
+        up = i.split("@")
         data = {
             "username": up[0],
             "password": up[1],
