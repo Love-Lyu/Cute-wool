@@ -1,15 +1,3 @@
-/*
-机场签到
-cron: 16 8,22 * * *
-
-自己定时，想什么时候签到就什么时候签到
-适用于某些通用机场模板，自行测试你家机场能不能用
-把机场域名，用户名和密码填到变量jcAccounts里，多账户用换行或者#隔开，格式：
-export jcAccounts='host=biteb.cc; username=你的用户名; password=你的密码;'
-
-自用的机场邀请(6元一个月)：
-https://biteb.cc/auth/register?code=v7wt
-*/
 const $ = new Env('机场签到');
 const jsname = '机场签到'
 const logDebug = 0
