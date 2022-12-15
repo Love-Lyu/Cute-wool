@@ -9,7 +9,7 @@ test = kjwj.split('&')[0]
 test2 = kjwj.split('&')[1]
 username = ([test])
 password = ([test2])
-#print(username,password)  
+#print(username,password)
 
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
@@ -44,7 +44,7 @@ for i in range(len(username)):
         print("⚠️还未签到 开始签到")
         html_2 = requests.post(url=sign_url, headers=sign_headers)
         imfo_2 = json.loads(html_2.text)
-        print("✅签到成功 获得" + str(imfo_2) + "积分")
+        print("✅签到成功 获得" + str(imfo_2)['mission']['credit'] + "积分")
     else:
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
