@@ -47,4 +47,4 @@ for i in range(len(username)):
         print("✅签到成功 获得" + str(imfo_2)['mission']['credit'] + "积分")
     else:
         print("🔁帐号" + str(i + 1) + " " + name )
-        print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
+        print("✅今天已经签到 获得" + str(imfo_1)['mission']['credit'] + "积分")
