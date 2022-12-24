@@ -40,7 +40,7 @@ for i in range(len(username)):
     html_1 = requests.post(url=check_url, headers=sign_headers)
     imfo_1 = json.loads(html_1.text)
     if imfo_1['mission']['credit'] == 0:
-        print("🔁开始检查第"+str(i+1)+"个帐号"+ " " +  name +"签到")
+        print("🔁开始检查第"+str(i+1)+"个帐号"+ " " +  name)
         print("⚠️还未签到 开始签到")
         html_2 = requests.post(url=sign_url, headers=sign_headers)
         imfo_2 = json.loads(html_2.text)
