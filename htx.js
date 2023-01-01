@@ -14,8 +14,6 @@ let httpResult, httpReq, httpResp
 const ckFile1 = 'htx.txt'
 const ckName = 'htx'
 let userCookie = []
-let u_host = 'htxtest.lcago.cn:28074'//域名,感觉域名有毒
-
 try {
     userCookie = userCookie.concat(fs.readFileSync(`./${ckFile1}`,'utf-8').split('\n')||[])
     console.log(`ck文件[ ${ckFile1} ]加载成功`)
@@ -41,11 +39,15 @@ class UserInfo {
 		this.n=++userIdx,this.index = `账号 [${this.n}]`
 		this.ck=str.split('#')
 	}
-	async sign() {
+//
+	async sign () {
 		try {
-			let url = `http://${u_host}/signIn/sign`
+			let url = `https://htx.lcago.cn/signIn/sign`
 			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","language": "ZH","appChannel": "htx","systemversion": "9"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "htx.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
@@ -61,14 +63,15 @@ class UserInfo {
 		} catch (e) {} finally {
 			return Promise.resolve(1);
 		}
-	};
-	
-	async participate () {
-	    try {
-	        let url = `http://${u_host}/community/participate`
+	}
+		async participate () {
+		try {
+			let url = `https://carbon.lcago.cn/community/participate`
 			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","taskId":"EHD8472JSDS_htx"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8",
-			    "Host": u_host,}
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "htx.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
@@ -86,59 +89,35 @@ class UserInfo {
 			return Promise.resolve(1);
 		}
 	}
-	//分享
-	async fx() {
+	//答题
+	async dt () {
 		try {
-			let url = `http://${u_host}/community/share/accomplish`
-			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","taskId":"SHARE001_htx"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
+			let url = `https://carbon.lcago.cn/community/requestQuestion`
+			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","taskId":"EHD8472JSDS_htx"}`
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "carbon.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
 			let result = httpResult;
 				//console.log(result)
 			if (result.respcod == '01'){
-			    console.log(result.respmsg)
-			    
+			console.log(`${this.index}  答题 ${result.respmsg}`)
+		for (let i=0;i<result.data.dataList.length;i++){
+let dd=result.data.dataList[i]
+this.id=dd.id
+this.wer=dd.answer
+//console.log(`${this.id}  ${this.wer}`)
+await this.tjda()
+ await $.wait(5000)
+ if (this.b == 1) break
+            }
 			}else if (result.respcod == '02'){
-			    console.log(result.respmsg)
-			    
+			console.log(result.respmsg)
 			}else if (result.respcod == '04'){
-			    console.log(result.respmsg)
-			}
-		} catch (e) {} finally {
-			return Promise.resolve(1);
-		}
-	}
-	
-	//答题
-	async dt() {
-		try {
-			let url = `http://${u_host}/community/requestQuestion`
-			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","taskId":"EHD8472JSDS_htx"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
-			let urlObject = popu(url, h, body)
-			// console.log(urlObject)
-			await httpRequest('post', urlObject)
-			let result = httpResult;
-			//console.log(result)
-			if (result.respcod == '01'){
-			    console.log(`${this.index}  答题 ${result.respmsg}`)
-			    for (let i=0;i<result.data.dataList.length;i++){
-			        let dd=result.data.dataList[i]
-			        this.id=dd.id
-			        this.wer=dd.answer
-			        //console.log(`${this.id}  ${this.wer}`)
-			        await this.tjda()
-			        await $.wait(5000)
-			        if (this.b == 1) break
-			    }
-			    
-			}else if (result.respcod == '02'){
-			    console.log(result.respmsg)
-			    
-			}else if (result.respcod == '04'){
-			    console.log(result.respmsg)
+			console.log(result.respmsg)
 			}
 		} catch (e) {} finally {
 			return Promise.resolve(1);
@@ -146,9 +125,12 @@ class UserInfo {
 	}
 	async tjda () {
 		try {
-			let url = `http://${u_host}/community/answerQuestion`
+			let url = `https://carbon.lcago.cn/community/answerQuestion`
 			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","questionId":${this.id},"answer":"${this.wer}"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "carbon.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
@@ -168,9 +150,12 @@ class UserInfo {
 	}
 		async interact () {
 		try {
-			let url = `http://${u_host}/interact/data`
+			let url = `https://htx.lcago.cn/interact/data`
 			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "htx.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
@@ -178,19 +163,17 @@ class UserInfo {
 			let result = httpResult;
 				//console.log(result)
 			if (result.respcod == '01'){
-			    this.grxx = result.data.nickName
+			this.grxx = result.data.nickName
 				for (let i=0;i<result.data.dataList.length;i++){
-				    let d=result.data.dataList[i]
-				    this.ida=d.id,this.scene=d.source,this.value=d.value
-				    await this.collect()
-				    await $.wait(3000)
-				    
-				}
-			    
+let d=result.data.dataList[i]
+this.ida=d.id,this.scene=d.source,this.value=d.value
+ await this.collect()
+ await $.wait(3000)
+            }
 			}else if (result.respcod == '02'){
-			    console.log(result.respmsg)
+			console.log(result.respmsg)
 			}else if (result.respcod == '04'){
-			    console.log(result.respmsg)
+			console.log(result.respmsg)
 			}
 		} catch (e) {} finally {
 			return Promise.resolve(1);
@@ -198,9 +181,12 @@ class UserInfo {
 	}
 		async collect () {
 		try {
-			let url = `http://${u_host}/interact/collect`
+			let url = `https://htx.lcago.cn/interact/collect`
 			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}","id":"${this.ida}"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "htx.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
@@ -219,10 +205,13 @@ class UserInfo {
 	}
 		async myData () {
 		try {
-			let url = `http://${u_host}/myCarbonAssets/myData`
+			let url = `https://htx.lcago.cn/myCarbonAssets/myData`
 			
 			let body = `{"token":"${this.ck[0]}","deviceCoding":"${this.ck[1]}"}`
-			let h = {"Content-Type": "application/json; charset\u003dutf-8","Host": u_host,}
+			let h = {
+    "Content-Type": "application/json; charset\u003dutf-8",
+    "Host": "htx.lcago.cn",
+  }
 			let urlObject = popu(url, h, body)
 			// console.log(urlObject)
 			await httpRequest('post', urlObject)
@@ -253,13 +242,6 @@ class UserInfo {
 		taskll = [], console.log(`\n============= 签到 =============`)
 		for(let user of userList) {
 			await user.sign()
-		}
-		console.log(`\n============= 分享 =============`)
-		for(let user of userList) {
-		    for(let a=0;a<3;a++){
-		        await $.wait(3000)
-		        await user.fx()
-		    }
 		}
 		console.log(`\n============= 答题 =============`)
 		for(let user of userList) {
