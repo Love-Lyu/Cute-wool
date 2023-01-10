@@ -1,3 +1,5 @@
+#科技玩家-签到
+#环境变量 kjwj="账户&密码"
 import requests,json,re,os
 #检测账号变量
 kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
