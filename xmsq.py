@@ -1,6 +1,6 @@
 #小米社区-日常任务
 #环境变量 xiaomi="账户&密码"
-import requests,json,time,base64,binascii,hashlib,os
+import requests,json,time,base64,binascii,hashlib,os,sys
 #from sendNotify import send
 #检测环境变量
 xiaomi = os.environ.get("xiaomi") if os.environ.get("xiaomi") else ""
