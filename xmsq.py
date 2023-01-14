@@ -1,18 +1,22 @@
 #小米社区-日常任务
-#环境变量 xiaomi="账户&密码"
+#环境变量 xiaomi="账户&密码" 多账户 # 分割
 import requests,json,time,base64,binascii,hashlib,os,sys
-#from sendNotify import send
+from datetime import datetime
+from sendNotify import send
 #检测环境变量
 xiaomi = os.environ.get("xiaomi") if os.environ.get("xiaomi") else ""
-#检测账号
 if not xiaomi or "&" not in xiaomi:
     print("⚠️未发现有效账号,退出程序!")
     sys.exit()
-test = xiaomi.split('&')[0]
-test2 = xiaomi.split('&')[1]
-account = ([test])
-password = ([test2])
-#print(account,password)     
+#分割账户
+accounts = xiaomi.split('#')
+for i in accounts:
+    findAccount = i.split('&')
+    zh = findAccount[0]
+    mm = findAccount[1]
+    account = ([zh])
+    password = ([mm])
+    #print(account,password)   
 
 # 获取cookie
 def Phone(account, password):
@@ -146,3 +150,7 @@ for i in range(len(account)):
             print(result_watch['message'] + '，今日已达上限⚠️' + '\n' + '*************')
     #print('等待1min执行下一个帐号')
     #time.sleep(60)
+# 执行完毕发送通知
+title = '小米社区-日常任务'
+msg = f"⏰{str(datetime.now())[:19]}\n" + '任务完成'
+send(title,msg)

@@ -1,5 +1,5 @@
 #科技玩家-签到
-#环境变量 kjwj="账户&密码"
+#环境变量 kjwj="账户&密码" 多账户 # 分割
 import requests,json,re,os,sys
 #检测账户变量
 kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
@@ -10,8 +10,10 @@ if not kjwj or "@" not in kjwj:
 account = kjwj.split('#')
 for i in account:
     findAccount = i.split('&')
-    username = ("['" + findAccount[0] + "']")
-    password = ("['" + findAccount[1] + "']")
+    zh = findAccount[0] 
+    mm = findAccount[1]
+    username = ([zh])
+    password = ([mm])
     #print(username,password)
 
 for i in range(len(username)):
