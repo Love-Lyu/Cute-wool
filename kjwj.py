@@ -1,17 +1,18 @@
 #科技玩家-签到
 #环境变量 kjwj="账户&密码"
 import requests,json,re,os
-#检测账号变量
+#检测账户变量
 kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
-#检测账号
-if not kjwj or "&" not in kjwj:
+if not kjwj or "@" not in kjwj:
     print("⚠️未发现有效账号,退出程序!")
     sys.exit()
-test = kjwj.split('&')[0]
-test2 = kjwj.split('&')[1]
-username = ([test])
-password = ([test2])
-#print(username,password)
+#分割账户
+account = kjwj.split('#')
+for i in account:
+    findAccount = i.split('&')
+    username = ("['" + findAccount[0] + "']")
+    password = ("['" + findAccount[1] + "']")
+    #print(username,password)
 
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
