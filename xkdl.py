@@ -1,5 +1,5 @@
 #星空代理-签到
-#环境变量 xingkong="账户1@密码&账户2@密码"
+#环境变量 xingkong="账户1@密码" 多账户 & 分割
 import os
 import re
 from datetime import datetime
