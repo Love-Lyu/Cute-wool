@@ -10,7 +10,7 @@ if not wapj:
     print("⚠️未发现有效账号,退出程序!")
     sys.exit()
 #分割账户
-cookie = wapj
+cookie = [wapj]
 #print(cookie)
 
 for i in range(len(cookie)):
