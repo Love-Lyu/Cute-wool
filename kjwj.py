@@ -57,5 +57,5 @@ for i in range(len(username)):
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
 # 执行完毕发送通知
 title = '🔁科技玩家-签到'
-msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + '✅签到成功'
+msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + ("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
 send(title,msg)
