@@ -151,6 +151,6 @@ for i in range(len(account)):
     #print('等待1min执行下一个帐号')
     #time.sleep(60)
 # 执行完毕发送通知
-title = '小米社区-日常任务'
+title = '🔁小米社区-日常任务'
 msg = f"⏰{str(datetime.now())[:19]}\n" + (userId) + ' ' + '✅任务已完成'
 send(title,msg)

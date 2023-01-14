@@ -14,7 +14,7 @@ cookie = [wapj]
 #print(cookie)
 
 for i in range(len(cookie)):
-    print(f'开始第{i+1}个帐号签到')
+    print(f'🔁开始第{i+1}个帐号签到')
     headers = {
         "Cookie": f'{cookie[i]}',
         "ContentType": "text/html;charset=gbk",
@@ -28,11 +28,18 @@ for i in range(len(cookie)):
     )
     fb = BeautifulSoup(fa.text, "html.parser")
     fc = fb.find("div", id="messagetext").find("p").text
-    if "您需要先登录才能继续本操作" in fc:
-        print("Cookie 失效")
-    elif "恭喜" in fc:
-        print("签到成功")
-    elif "不是进行中的任务" in fc:
-        print("今日已签到")
+    if "⚠️您需要先登录才能继续本操作" in fc:
+        print("⚠️Cookie 失效")
+        msg1 = '⚠️Cookie 失效'
+    elif "✅恭喜" in fc:
+        print("✅签到成功")
+        msg2 = '✅签到成功'
+    elif "⚠️不是进行中的任务" in fc:
+        print("✅今日已签到")
     else:
-        print("签到失败")
+        print("⚠️签到失败")
+        msg3 = '⚠️签到失败'
+# 执行完毕发送通知
+title = '🔁吾爱破解-签到'
+msg = f"⏰{str(datetime.now())[:19]}\n" + (msg1) + (msg2) + (msg3)
+send(title,msg)
