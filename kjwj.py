@@ -1,6 +1,8 @@
 #科技玩家-签到
 #环境变量 kjwj="账户&密码" 多账户 # 分割
 import requests,json,re,os,sys
+from datetime import datetime
+from sendNotify import send
 #检测账户变量
 kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
 if not kjwj or "@" not in kjwj:
@@ -53,3 +55,7 @@ for i in range(len(username)):
     else:
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
+# 执行完毕发送通知
+title = '科技玩家-签到'
+msg = f"⏰{str(datetime.now())[:19]}\n" + (username) + ' ' + '✅签到成功'
+send(title,msg)

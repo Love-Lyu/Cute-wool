@@ -152,5 +152,5 @@ for i in range(len(account)):
     #time.sleep(60)
 # 执行完毕发送通知
 title = '小米社区-日常任务'
-msg = f"⏰{str(datetime.now())[:19]}\n" + '任务完成'
+msg = f"⏰{str(datetime.now())[:19]}\n" + (userId) + ' ' + '✅任务已完成'
 send(title,msg)
