@@ -148,9 +148,10 @@ for i in range(len(account)):
             print('✅浏览帖子成功，获得积分： ' + str(result_watch['entity']['score']))
         else:
             print(result_watch['message'] + '，今日已达上限⚠️' + '\n' + '*************')
-        if not xiaomi or "#" not in xiaomi:
-            print('等待1min执行下一个帐号')
-            time.sleep(60)
+#判断是否多账户
+if not xiaomi or "#" not in xiaomi:
+    print('等待1min执行下一个帐号')
+    time.sleep(60)
 # 执行完毕发送通知
 title = '🔁小米社区-日常任务'
 msg = f"⏰{str(datetime.now())[:19]}\n" + (userId) + ' ' + '✅任务已完成'
