@@ -55,6 +55,8 @@ for i in range(len(username)):
         imfo_2 = json.loads(html_2.text)
         print("✅签到成功 获得" + imfo_2['mission']['credit'] + "积分")
     else:
+        print("🔁环境变量[ kjwj ]加载成功")
+        print("🔁共找到" + str(i+1) + "个账号")
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
 # 执行完毕发送通知
