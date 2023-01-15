@@ -1,6 +1,6 @@
 #小米社区-日常任务
 #环境变量 xiaomi="账户&密码" 多账户 # 分割
-import requests,json,time,base64,binascii,hashlib,os,sys
+import requests,json,time,base64,binascii,hashlib,os,sys,re
 from datetime import datetime
 from sendNotify import send
 #检测环境变量
@@ -149,7 +149,7 @@ for i in range(len(account)):
         else:
             print(result_watch['message'] + '，今日已达上限⚠️' + '\n' + '*************')
 #判断是否多账户
-if not xiaomi or "#" not in xiaomi:
+if not xiaomi and "#":
     print('等待1min执行下一个帐号')
     time.sleep(60)
 # 执行完毕发送通知
