@@ -7,7 +7,7 @@ from sendNotify import send
 #检测账户变量
 wapj = os.environ.get("wapj") if os.environ.get("wapj") else ""
 if not wapj:
-    print("⚠️未发现有效账号,退出程序!")
+    print("⚠️未发现有效cookie,退出程序!")
     sys.exit()
 #分割账户
 cookie = [wapj]
