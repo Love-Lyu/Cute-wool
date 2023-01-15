@@ -15,7 +15,7 @@ for i in account:
     findAccount = i.split('#')
     cookie = findAccount[0]
     #print(cookie)
-
+#主程序
 url_info = 'https://ikuuu.dev/user/profile'
 url = 'https://ikuuu.dev/user/checkin'
 headers = {

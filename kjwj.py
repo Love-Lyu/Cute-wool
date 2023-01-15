@@ -17,7 +17,7 @@ for i in account:
     username = ([zh])
     password = ([mm])
     #print(username,password)
-
+#主程序
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
     headers = {

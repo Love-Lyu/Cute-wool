@@ -16,7 +16,7 @@ for i in account:
     passwd = findAccount[1]
     url = findAccount[2]
     #print(email,passwd,url)
-
+#主程序
 headers = {
     'Host': url,
     'Sec-Ch-Ua': '"(Not(A:Brand";v="8", "Chromium";v="98"',

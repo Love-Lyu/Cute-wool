@@ -16,7 +16,7 @@ for i in account:
     findAccount = i.split('#')
     cookie = findAccount[0]
     #print(cookie)
-
+#主程序
 for i in range(len(cookie)):
     print(f'🔁开始第{i+1}个帐号签到')
     headers = {
