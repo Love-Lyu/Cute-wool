@@ -1,5 +1,6 @@
 #吾爱破解-签到
 #抓取 https://www.52pojie.cn/forum.php 整段cookie
+#环境变量 wapj="cookie" 多账户 # 分割
 import requests, os, sys
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -10,8 +11,11 @@ if not wapj:
     print("⚠️未发现有效cookie,退出程序!")
     sys.exit()
 #分割账户
-cookie = [wapj]
-#print(cookie)
+account = wapj.split('#')
+for i in account:
+    findAccount = i.split('#')
+    cookie = findAccount[0]
+    #print(cookie)
 
 for i in range(len(cookie)):
     print(f'🔁开始第{i+1}个帐号签到')

@@ -1,5 +1,6 @@
 #ikuuu机场-签到
 #https://ikuuu.dev/user 的cookie
+#环境变量 ikuuu="cookie" 多账户 # 分割
 import requests, json,re,os,sys
 from datetime import datetime
 from sendNotify import send
@@ -9,8 +10,11 @@ if not ikuuu:
     print("⚠️未发现有效cookie,退出程序!")
     sys.exit()
 #分割账户
-cookie = ikuuu
-#print(cookie)
+account = ikuuu.split('#')
+for i in account:
+    findAccount = i.split('#')
+    cookie = findAccount[0]
+    #print(cookie)
 
 url_info = 'https://ikuuu.dev/user/profile'
 url = 'https://ikuuu.dev/user/checkin'
