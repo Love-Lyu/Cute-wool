@@ -81,6 +81,8 @@ for i in range(len(account)):
     result = json.loads(html.text)
     result_user = json.loads(html_user.text)
     userId = result_user['entity']['userId']
+    print("🔁环境变量[ xiaomi ]加载成功")
+    print(f'🔁共找到{i+1}个账号')
     print('*************'+'\n'+f'🔁开始第{i + 1}个账号签到')
     print('✅userId: '+userId + ' 用户名: '+result_user['entity']['userName']+ ' 段位: '+ result_user['entity']['userGrowLevelInfo']['showLevel'])
     print('🔁签到结果：')

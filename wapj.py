@@ -18,6 +18,9 @@ for i in account:
     #print(cookie)
 #主程序
 for i in range(len(cookie)):
+    print("🔁环境变量[ wapj ]加载成功")
+    print(f'🔁共找到{i+1}个账号')
+    print('*************')
     print(f'🔁开始第{i+1}个帐号签到')
     headers = {
         "Cookie": f'{cookie[i]}',
