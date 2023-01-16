@@ -16,7 +16,7 @@ for i in account:
     findAccount = i.split('#')
     zhcookie = findAccount[0]
     cookie = ([zhcookie])
-    print(cookie)
+    #print(cookie)
 #主程序
 for i in range(len(cookie)):
     print("🔁环境变量[ wapj ]加载成功")
