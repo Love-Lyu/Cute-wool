@@ -14,8 +14,9 @@ if not wapj:
 account = wapj.split('#')
 for i in account:
     findAccount = i.split('#')
-    cookie = findAccount[0]
-    #print(cookie)
+    zhcookie = findAccount[0]
+    cookie = ([zhcookie])
+    print(cookie)
 #主程序
 for i in range(len(cookie)):
     print("🔁环境变量[ wapj ]加载成功")
