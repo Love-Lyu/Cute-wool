@@ -48,6 +48,7 @@ for i in range(len(username)):
     imfo_1 = json.loads(html_1.text)
     if imfo_1['mission']['credit'] == 0:
         title = '🔁科技玩家-签到'
+        print(title)
         print("🔁环境变量[ kjwj ]加载成功")
         print("🔁共找到" + str(i+1) + "个账号")
         print('*************')
@@ -59,6 +60,7 @@ for i in range(len(username)):
         msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分"
     else:
         title = '🔁科技玩家-签到'
+        print(title)
         print("🔁环境变量[ kjwj ]加载成功")
         print("🔁共找到" + str(i+1) + "个账号")
         print('*************')

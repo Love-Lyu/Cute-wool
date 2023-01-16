@@ -19,6 +19,8 @@ for i in account:
     #print(cookie)
 #主程序
 for i in range(len(cookie)):
+    title = '🔁吾爱破解-签到'
+    print(title)
     print("🔁环境变量[ wapj ]加载成功")
     print(f'🔁共找到{i+1}个账号')
     print('*************')
@@ -38,13 +40,15 @@ for i in range(len(cookie)):
     fc = fb.find("div", id="messagetext").find("p").text
     if "⚠️您需要先登录才能继续本操作" in fc:
         print("⚠️Cookie 失效")
+        msg = f"⏰{str(datetime.now())[:19]}\n" + "⚠️Cookie 失效"
     elif "✅恭喜" in fc:
         print("✅签到成功")
+        msg = f"⏰{str(datetime.now())[:19]}\n" + "✅签到成功"
     elif "⚠️不是进行中的任务" in fc:
         print("✅今日已签到")
+        msg = f"⏰{str(datetime.now())[:19]}\n" + "✅今日已签到"
     else:
         print("⚠️签到失败")
+        msg = f"⏰{str(datetime.now())[:19]}\n" + "⚠️签到失败"
 # 执行完毕发送通知
-title = '🔁吾爱破解-签到'
-msg = f"⏰{str(datetime.now())[:19]}\n" + '✅签到成功'
 send(title,msg)
