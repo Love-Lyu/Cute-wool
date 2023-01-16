@@ -47,6 +47,7 @@ for i in range(len(username)):
     html_1 = requests.post(url=check_url, headers=sign_headers)
     imfo_1 = json.loads(html_1.text)
     if imfo_1['mission']['credit'] == 0:
+        title = '🔁科技玩家-签到'
         print("🔁环境变量[ kjwj ]加载成功")
         print("🔁共找到" + str(i+1) + "个账号")
         print('*************')
@@ -55,13 +56,14 @@ for i in range(len(username)):
         html_2 = requests.post(url=sign_url, headers=sign_headers)
         imfo_2 = json.loads(html_2.text)
         print("✅签到成功 获得" + imfo_2['mission']['credit'] + "积分")
+        msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分"
     else:
+        title = '🔁科技玩家-签到'
         print("🔁环境变量[ kjwj ]加载成功")
         print("🔁共找到" + str(i+1) + "个账号")
         print('*************')
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
+        msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
 # 执行完毕发送通知
-title = '🔁科技玩家-签到'
-msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + '✅签到成功'
 send(title,msg)
