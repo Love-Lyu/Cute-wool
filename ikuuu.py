@@ -18,7 +18,7 @@ for i in account:
 #主程序
 title = '🔁ikuuu机场-签到' 
 print(title)
-print("🔁环境变量[ ikuuu     ]加载成功")
+print("🔁环境变量[ ikuuu ]加载成功")
 print('*************')
 url_info = 'https://ikuuu.dev/user/profile'
 url = 'https://ikuuu.dev/user/checkin'
@@ -33,5 +33,5 @@ info = "".join(re.findall('<div class="d-sm-none d-lg-inline-block">(.*?)</div>'
 print(info+'\n'+result)
 # 执行完毕发送通知
 print('*************' + '\n' + '🔁开始发送通知')
-msgtext = f"⏰{str(datetime.now())[:19]}\n" + info + '\n' + '✅' + result
+msgtext = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + info + '\n' + '✅' + result
 send(title,msgtext)
