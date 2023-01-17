@@ -16,6 +16,10 @@ for i in account:
     cookie = findAccount[0]
     #print(cookie)
 #主程序
+title = '🔁ikuuu机场-签到' 
+print(title)
+print("🔁环境变量[ ikuuu     ]加载成功")
+print('*************')
 url_info = 'https://ikuuu.dev/user/profile'
 url = 'https://ikuuu.dev/user/checkin'
 headers = {
@@ -28,6 +32,6 @@ result = json.loads(html.text)['msg']
 info = "".join(re.findall('<div class="d-sm-none d-lg-inline-block">(.*?)</div>', html_info, re.S))
 print(info+'\n'+result)
 # 执行完毕发送通知
-title = '🔁ikuuu机场-签到'
-msgtext = f"⏰{str(datetime.now())[:19]}\n" + '✅签到成功'
+print('*************' + '\n' + '🔁开始发送通知')
+msgtext = f"⏰{str(datetime.now())[:19]}\n" + info + '\n' + '✅' + result
 send(title,msgtext)
