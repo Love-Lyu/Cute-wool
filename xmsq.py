@@ -81,6 +81,8 @@ for i in range(len(account)):
     result = json.loads(html.text)
     result_user = json.loads(html_user.text)
     userId = result_user['entity']['userId']
+    title = '🔁小米社区-日常任务'
+    print(title)
     print("🔁环境变量[ xiaomi ]加载成功")
     print(f'🔁共找到{i+1}个账号')
     print('*************'+'\n'+f'🔁开始第{i + 1}个账号签到')
@@ -155,6 +157,6 @@ for i in range(len(account)):
 #    print('等待1min执行下一个帐号')
 #    time.sleep(60)
 # 执行完毕发送通知
-title = '🔁小米社区-日常任务'
+print('*************' + '\n' + '🔁开始发送通知')
 msg = f"⏰{str(datetime.now())[:19]}\n" + (userId) + ' ' + '✅任务已完成'
 send(title,msg)

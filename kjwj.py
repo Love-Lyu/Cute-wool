@@ -68,4 +68,5 @@ for i in range(len(username)):
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
         msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
 # 执行完毕发送通知
-send('*************'+'\n'+title,msg)
+print('*************' + '\n' + '🔁开始发送通知')
+send(title,msg)

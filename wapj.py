@@ -51,4 +51,5 @@ for i in range(len(cookie)):
         print("⚠️签到失败")
         msg = f"⏰{str(datetime.now())[:19]}\n" + "⚠️签到失败"
 # 执行完毕发送通知
-send('*************'+'\n'+title,msg)
+print('*************' + '\n' + '🔁开始发送通知')
+send(title,msg)
