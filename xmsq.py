@@ -151,7 +151,7 @@ for i in range(len(account)):
         if result_watch['status'] == 200:
             print('✅浏览帖子成功，获得积分： ' + str(result_watch['entity']['score']))
         else:
-            print(result_watch['message'] + '，今日已达上限⚠️' + '\n' + '*************')
+            print(result_watch['message'] + '，今日已达上限⚠️')
 #判断是否多账户
 #if not xiaomi and "#":
 #    print('等待1min执行下一个帐号')
