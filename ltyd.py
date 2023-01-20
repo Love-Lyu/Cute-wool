@@ -1,7 +1,7 @@
 #联通app抽奖 入口:联通app 搜索 阅读专区 进入话费派送中
 #环境 pycryptodome & pip3 install pycryptodome
-#环境变量 LTphone="手机号"(必需) UNICOM_LOTTER="true"(选填)
-#LTphone 为你的手机号
+#环境变量 phone_num="手机号#UA"(必需) 多账户 & 分割 UNICOM_LOTTER="true"(选填)
+#phone_num 为你的手机号
 #UNICOM_LOTTER 默认自动抽奖, 若不需要 则添加环境变量值为 False
 
 from requests import post, get
