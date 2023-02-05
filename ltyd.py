@@ -23,7 +23,7 @@ import threading
 
 
 
-msg_str = ""
+msg_str = "联通话费兑换路径：联通APP搜索阅读--->阅读专区--->我的--->话费红包，可兑换3元或者5元话费抵扣券，最后使用沃钱包支付即可\n\n"
 
 """主类"""
 class China_Unicom:
@@ -130,8 +130,8 @@ class China_Unicom:
         self.get_cardid()
         self.get_cntindex()
         self.get_chapterallindex()
-        self.print_now("正在执行观看150次小说, 此过程较久, 最大时长为150 * 8s = 20min")
-        for i in range(150):
+        self.print_now(f"你的账号{self.phone_num} ：正在执行观看300次小说, 此过程较久, 最大时长为300 * 8s = 40min")
+        for i in range(300):
             date = datetime.today().__format__("%Y%m%d%H%M%S")
             chapterAllIndex = choice(self.chapterallindex_list)
             url = f"https://10010.woread.com.cn/ng_woread_service/rest/cnt/wordsDetail?catid={self.catid}&pageIndex={self.pageIndex}&cardid={randint(10000, 99999)}&cntindex={self.cntindex}&chapterallindex={chapterAllIndex}&chapterseno=3"
@@ -146,7 +146,7 @@ class China_Unicom:
                 self.print_now("阅读小说发生异常, 正在重新登录执行, 接口返回")
                 self.print_now(data)
                 return self.main()
-            sleep(uniform(2, 8))
+            sleep(uniform(2, 4))
 
     def query_score(self):
         url = "https://10010.woread.com.cn/ng_woread_service/rest/activity/yearEnd/queryUserScore"
