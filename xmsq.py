@@ -8,16 +8,15 @@ xiaomi = os.environ.get("xiaomi") if os.environ.get("xiaomi") else ""
 if not xiaomi or "&" not in xiaomi:
     print("⚠️未发现有效账号,退出程序!")
     sys.exit()
-#分割账户
+
+#分割账户  
 accounts = xiaomi.split('#')
-for i in accounts:
-    findAccount = i.split('&')
-    zh = findAccount[0]
-    mm = findAccount[1]
+for account_data in accounts:
+    zh,mm = account_data.split('&')
     account = ([zh])
     password = ([mm])
     #print(account,password)   
-
+    
 # 获取cookie
 def Phone(account, password):
     md5 = hashlib.md5()
@@ -88,7 +87,8 @@ for i in range(len(account)):
     print('*************'+'\n'+f'🔁开始第{i + 1}个账号签到')
     print('✅userId: '+userId + ' 用户名: '+result_user['entity']['userName']+ ' 段位: '+ result_user['entity']['userGrowLevelInfo']['showLevel'])
     print('🔁签到结果：')
-    print('✅' + result['message'])
+    print('⚠️签到失败!')
+    #print('✅' + result['message'])
 # 点赞任务
     print('🔁开始加入点赞任务>>>>')
     for a in range(2):
@@ -152,10 +152,12 @@ for i in range(len(account)):
             print('✅浏览帖子成功，获得积分： ' + str(result_watch['entity']['score']))
         else:
             print(result_watch['message'] + '，今日已达上限⚠️')
+            
 #判断是否多账户
 #if not xiaomi and "#":
 #    print('等待1min执行下一个帐号')
 #    time.sleep(60)
+
 # 执行完毕发送通知
 print('*************' + '\n' + '🔁开始发送通知')
 msg = f"⏰{str(datetime.now())[:19]}\n" + (userId) + ' ' + '✅任务已完成'
