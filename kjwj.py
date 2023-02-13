@@ -63,7 +63,7 @@ for i in range(len(username)):
         print('*************')
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
-        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分" + '\n' + str(zh_1) + '\n' + "✅签到成功 获得" + imfo_1['mission']['credit'] + "积分"
+        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分" + '\n' + str(zh_1) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
 # # 执行完毕发送通知
 print('*************' + '\n' + '🔁开始发送通知')
 send(title,msg)
