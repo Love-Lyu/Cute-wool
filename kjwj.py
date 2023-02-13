@@ -12,10 +12,8 @@ if not kjwj or "@" not in kjwj:
 accounts = kjwj.split('#')
 username,password = zip(*(i.split('&') for i in accounts))
 #print(username,password)
-for i in username:
-    findAccount = i.split(',')
-    zh = findAccount[0]
-    #print(zh)
+zh,zh_1 = username[:2]
+#print(zh,zh_1)
 #主程序
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
@@ -56,7 +54,7 @@ for i in range(len(username)):
         html_2 = requests.post(url=sign_url, headers=sign_headers)
         imfo_2 = json.loads(html_2.text)
         print("✅签到成功 获得" + imfo_2['mission']['credit'] + "积分")
-        msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + ' ' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分"
+        msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + '\n' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分" + '\n' + str(zh_1) + '\n' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分"
     else:
         title = '🔁科技玩家-签到'
         print(title)
@@ -65,7 +63,7 @@ for i in range(len(username)):
         print('*************')
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
-        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
+        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分" + '\n' + str(zh_1) + '\n' + "✅签到成功 获得" + imfo_1['mission']['credit'] + "积分"
 # # 执行完毕发送通知
 print('*************' + '\n' + '🔁开始发送通知')
 send(title,msg)
