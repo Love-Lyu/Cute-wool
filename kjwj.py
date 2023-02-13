@@ -4,10 +4,9 @@ import requests,json,re,os,sys
 from datetime import datetime
 from sendNotify import send
 #检测账户变量
-kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
+kjwj = os.environ.get("kjwj") 
 if not kjwj or "@" not in kjwj:
-   print("⚠️未发现有效账号,退出程序!")
-   sys.exit()
+   sys.exit("⚠️未发现有效账号,退出程序!") 
 #分割账户
 accounts = kjwj.split('#')
 username,password = zip(*(i.split('&') for i in accounts))
@@ -54,7 +53,8 @@ for i in range(len(username)):
         html_2 = requests.post(url=sign_url, headers=sign_headers)
         imfo_2 = json.loads(html_2.text)
         print("✅签到成功 获得" + imfo_2['mission']['credit'] + "积分")
-        msg = f"⏰{str(datetime.now())[:19]}\n" + str(zh) + '\n' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分" + '\n' + str(zh_1) + '\n' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分"
+        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分" + '\n' + '🔁' + str(zh_1) + '\n' + "✅签到成功 获得" + imfo_2['mission']['credit'] + "积分"
+        print('*************')
     else:
         title = '🔁科技玩家-签到'
         print(title)
@@ -63,7 +63,8 @@ for i in range(len(username)):
         print('*************')
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
-        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分" + '\n' + str(zh_1) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
+        msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分" + '\n' + '🔁' + str(zh_1) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
+        print('*************')
 # # 执行完毕发送通知
-print('*************' + '\n' + '🔁开始发送通知')
+print('🔁开始发送通知')
 send(title,msg)
