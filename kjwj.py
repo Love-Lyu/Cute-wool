@@ -6,17 +6,16 @@ from sendNotify import send
 #检测账户变量
 kjwj = os.environ.get("kjwj") if os.environ.get("kjwj") else ""
 if not kjwj or "@" not in kjwj:
-    print("⚠️未发现有效账号,退出程序!")
-    sys.exit()
+   print("⚠️未发现有效账号,退出程序!")
+   sys.exit()
 #分割账户
-account = kjwj.split('#')
-for i in account:
-    findAccount = i.split('&')
-    zh = findAccount[0] 
-    mm = findAccount[1]
-    username = ([zh])
-    password = ([mm])
-    #print(username,password)
+accounts = kjwj.split('#')
+username,password = zip(*(i.split('&') for i in accounts))
+#print(username,password)
+for i in username:
+    findAccount = i.split(',')
+    zh = findAccount[0]
+    #print(zh)
 #主程序
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
@@ -50,7 +49,7 @@ for i in range(len(username)):
         title = '🔁科技玩家-签到'
         print(title)
         print("🔁环境变量[ kjwj ]加载成功")
-        print("🔁共找到" + str(i+1) + "个账号")
+        print("🔁找到第" + str(i+1) + "个账号")
         print('*************')
         print("🔁开始检查第"+str(i+1)+"个帐号"+ " " +  name)
         print("⚠️还未签到 开始签到")
@@ -62,11 +61,11 @@ for i in range(len(username)):
         title = '🔁科技玩家-签到'
         print(title)
         print("🔁环境变量[ kjwj ]加载成功")
-        print("🔁共找到" + str(i+1) + "个账号")
+        print("🔁找到第" + str(i+1) + "个账号")
         print('*************')
         print("🔁帐号" + str(i + 1) + " " + name )
         print("✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分")
         msg = f"⏰{str(datetime.now())[:19]}\n" + '🔁' + str(zh) + '\n' + "✅今天已经签到 获得" + imfo_1['mission']['credit'] + "积分"
-# 执行完毕发送通知
+# # 执行完毕发送通知
 print('*************' + '\n' + '🔁开始发送通知')
 send(title,msg)
