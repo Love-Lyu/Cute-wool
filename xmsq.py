@@ -4,19 +4,15 @@ import requests,json,time,base64,binascii,hashlib,os,sys,re
 from datetime import datetime
 from sendNotify import send
 #检测环境变量
-xiaomi = os.environ.get("xiaomi") if os.environ.get("xiaomi") else ""
+xiaomi = os.environ.get("xiaomi") 
 if not xiaomi or "&" not in xiaomi:
-    print("⚠️未发现有效账号,退出程序!")
-    sys.exit()
-
+   sys.exit("⚠️未发现有效账号,退出程序!") 
 #分割账户  
-accounts = xiaomi.split('#')
-for account_data in accounts:
-    zh,mm = account_data.split('&')
+accounts = [acc.split('&') for acc in xiaomi.split('#')]
+for zh,mm in accounts:
     account = ([zh])
     password = ([mm])
-    #print(account,password)   
-    
+    #print(account,password)
 # 获取cookie
 def Phone(account, password):
     md5 = hashlib.md5()
@@ -54,7 +50,6 @@ def Phone(account, password):
 
     sts = requests.get(url=nurl)
     return requests.utils.dict_from_cookiejar(sts.cookies)
-
 #签到任务
 for i in range(len(account)):
     cookie = str(Phone(f'{account[i]}', f'{password[i]}')).replace('{','').replace('}','').replace(',',';').replace(': ','=').replace('\'','').replace(' ','')
@@ -118,7 +113,6 @@ for i in range(len(account)):
     if result_follow['status']==200:
         print('✅加入圈子成功')
     time.sleep(1)
-
 # 浏览主页
     info_url =f'https://api.vip.miui.com/mtop/planet/vip/member/addCommunityGrowUpPointByAction?userId={userId}&action=BROWSE_SPECIAL_PAGES_USER_HOME'
     html_info = requests.get(url=info_url, headers=headers)
@@ -139,7 +133,6 @@ for i in range(len(account)):
         print('✅浏览主页成功，获得积分： '+str(result_llzt['entity']['score']))
     else:
         print(result_llzt['message']+'，今日已达上限⚠️')
-
 #浏览帖子
     print('🔁开始浏览帖子任务>>>>')
     for a in range(3):
