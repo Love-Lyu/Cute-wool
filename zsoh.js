@@ -96,7 +96,9 @@ class UserInfo {
 }
             paramOut = Object.assign({},await this.taskApi(urlParam))
             let result = paramOut.result
-            if(result.status==200)console.log(`${this.idx}任务: ${result.data.quest.name} 得到积分 ${result.data.quest.score} 最多完成次数 ${result.data.quest.maxTime}`)
+            //console.log(result)
+            if(result.status==200 && result.data.quest)console.log(`${this.idx}任务: ${result.data.quest.name} 得到积分 ${result.data.quest.score} 最多完成次数 ${result.data.quest.maxTime}`)
+            
     }
     async Info() {
         let paramOut = {}
