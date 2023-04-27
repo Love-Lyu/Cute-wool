@@ -50,7 +50,7 @@ def getVCode(headers):
 
 def ocr(tg,bg):
     """使用自有ocr识别滑块坐标"""
-    url = 'http://103.45.185.224:9898/slide/match/b64/json'
+    url = 'http://47.120.9.145:3001/slide/match/b64/json'
     jsonstr = json.dumps({'target_img': tg, 'bg_img': bg})
     response = requests.post(url, data=base64.b64encode(jsonstr.encode()).decode())
     return response.json()
