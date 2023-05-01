@@ -1,3 +1,15 @@
+"""
+阿里云盘 v1.0
+
+任务：签到
+
+token填到变量 alytoken
+export alytoken=""
+
+cron: 5 0,9 * * *
+const $ = new Env("阿里云盘");
+"""
+
 import requests
 import datetime
 import os
