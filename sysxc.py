@@ -1,4 +1,6 @@
 # 书亦烧仙草签到 抓包scrm-prod.shuyi.org.cn域名请求头里的auth
+# const $ = new Env("书亦烧仙草签到");
+# cron: 5 9,18 * * *
 
 import requests, base64, json, time, os
 
