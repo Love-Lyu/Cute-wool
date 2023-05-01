@@ -1,16 +1,12 @@
-"""
-1. 书亦烧仙草签到 抓包scrm-prod.shuyi.org.cn域名请求头里的auth
-   脚本仅供学习交流使用, 请在下载后24h内删除
-2. cron 以防cor识别出错每天运行两次左右
-3. ddddocr搭建方法https://github.com/sml2h3/ocr_api_server #如果脚本里的失效请自行搭建
-"""
+# 书亦烧仙草签到 抓包scrm-prod.shuyi.org.cn域名请求头里的auth
+
 import requests, base64, json, time, os
 
 try:
     from Crypto.Cipher import AES
 except:
     print(
-        "\n未检测到pycryptodome\n需要Python依赖里安装pycryptodome\n安装失败先linux依赖里安装gcc、python3-dev、libc-dev\n如果还是失败,重启容器,或者重启docker就能解决")
+        "\n未检测到pycryptodome\n需要Python依赖里安装pycryptodome\n安装失败先linux依赖里安装gcc、python3-dev、libc-dev")
     exit(0)
 
 def setHeaders(i):
@@ -27,12 +23,12 @@ cookies = []
 try:
     cookies = os.environ["sysxc_auth"].split("&")
     if len(os.environ["sysxc_auth"]) > 0:
-        print("已获取并使用Env环境Cookie\n声明：本脚本为学习python，请勿用于非法用途\n")
+        print("已获取并使用Env环境Cookie\n")
             
 
 except:
     print(
-        "【提示】请先获取微信小程序[书亦烧仙草]请求头中的auth\n环境变量添加: sysxc_auth \n吹牛群：https://t.me/+yHXoi9YH_ZcyMjJl")
+        "【提示】请先获取微信小程序[书亦烧仙草]请求头中的auth\n环境变量添加: sysxc_auth")
     exit(3)
 
 def getVCode(headers):
