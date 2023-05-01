@@ -1,6 +1,17 @@
 # 书亦烧仙草签到 抓包scrm-prod.shuyi.org.cn域名请求头里的auth
 # const $ = new Env("书亦烧仙草签到");
 # cron: 5 9,18 * * *
+"""
+书亦烧仙草 v1.0
+
+任务：签到
+
+自行捉包把scrm-prod.shuyi.org.cn域名请求头里的auth填到变量 sysxc_auth 中, 多账号&隔开
+export sysxc_auth=""
+
+cron: 5 9,18 * * *
+const $ = new Env("书亦烧仙草");
+"""
 
 import requests, base64, json, time, os
 
