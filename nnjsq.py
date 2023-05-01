@@ -1,14 +1,39 @@
-# 变量nn_user1，nn_pwd1，nn_user2，nn_pwd2，依次类推，代码更改在71行下面
-# 定时推荐  1 0 * * *     每天凌晨12点刷新任务，可自行设置定时
+"""
+nn加速器 v1.0
+
+任务：未知
+
+账号&密码填到变量 nnjsq 中, 多账号#隔开
+export nnjsq=""
+
+cron: 5 0 * * *
+const $ = new Env("nn加速器");
+"""
 
 import hashlib
 import json
 from time import sleep
 import requests
-import os
+import os,sys
 import notify
 
+#检测账户变量
+nnjsq = os.environ.get("nnjsq") 
+if not nnjsq or "&" not in nnjsq:
+    sys.exit("⚠️未发现有效账号,退出程序!") 
+    
+#分割账户
+accounts = {}
+for i, account in enumerate(nnjsq.split('#'), 1):
+    phone_key = f"nn_user{i}"
+    pwd_key = f"nn_pwd{i}"
+    phone = os.environ.get(phone_key)
+    password = os.environ.get(pwd_key)
+    if not phone or not password:
+        sys.exit(f"⚠️未发现有效账号{i},退出程序!")
+    accounts[f"account{i}"] = {"phone": account.split('&')[0], "passwd": account.split('&')[1]}
 
+# 登录
 def login(phone, passwd):
     messages = ''
     print(phone)
@@ -87,29 +112,7 @@ def login(phone, passwd):
                     sleep(0)
                     pass
     notify.send("【nn加速器】", messages)
-
-
-# 这里是多账号设置地方，单个账号就把账号2注释掉，多个账号自行增加代码
-accounts = {
-    # 账号1
-    "account1": {
-        "phone": os.environ['nn_user1'],
-        "passwd": os.environ['nn_pwd1']
-    },
-    # 账号2
-    "account2": {
-        "phone": os.environ['nn_user2'],
-        "passwd": os.environ['nn_pwd1']
-    },
-
-    # 账号3
-    #"account3": {
-    #    "phone": os.environ['nn_user3'],
-    #    "passwd": os.environ['nn_pwd3']
-    #},
-
-}
-
+    
 for account in accounts:
     print(f"Logging in to {account}...")
     login(accounts[account]["phone"], accounts[account]["passwd"])

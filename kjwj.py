@@ -1,18 +1,31 @@
-#科技玩家-签到
-#环境变量 kjwj="账户&密码" 多账户 # 分割
+"""
+科技玩家 v1.0
+
+任务：签到
+
+账号&密码填到变量 kjwj 中, 多账号#隔开
+export kjwj=""
+
+cron: 16 8,10 * * *
+const $ = new Env("科技玩家");
+"""
+
 import requests,json,re,os,sys
 from datetime import datetime
-from sendNotify import send
+from sendNotify import send # 推送
+
 #检测账户变量
 kjwj = os.environ.get("kjwj") 
-if not kjwj or "@" not in kjwj:
+if not kjwj or "&" not in kjwj:
    sys.exit("⚠️未发现有效账号,退出程序!") 
+   
 #分割账户
 accounts = kjwj.split('#')
 username,password = zip(*(i.split('&') for i in accounts))
 #print(username,password)
 zh,zh_1 = username[:2]
 #print(zh,zh_1)
+
 #主程序
 for i in range(len(username)):
     url = 'https://www.kejiwanjia.com/wp-json/jwt-auth/v1/token'
