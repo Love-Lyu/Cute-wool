@@ -3,7 +3,7 @@
 软件名:高佣联盟(安卓苹果都可以)
 种果树得红包，还可以兑换水果
 活动入口:底部菜单栏-任务-每日签到-0元领水果
-变量名:fdshck
+变量名:gyncck
 进入农场后抓包https://saas.hixiaoman.com/开头的，cookie里面userId和consumerId的值用#链接，只要数字就可以
 如:userId=fdsh-IOS-hdgj_rxbhsy=1891943122975506676;consumerId=fdsh-IOS-hdgj_rxbhsy=5320418;变量只需要1891943122975506676#5320418就行
 多账号@隔开
