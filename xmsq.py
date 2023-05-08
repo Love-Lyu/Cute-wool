@@ -1,5 +1,16 @@
 #小米社区-日常任务
 #环境变量 xiaomi="账户&密码" 多账户 # 分割
+"""
+小米社区 v1.0
+
+任务：日常任务
+
+export xiaomi="账户&密码" 多账户 # 分割
+
+cron: 5 9,15,20 * * *
+const $ = new Env("小米社区");
+"""
+
 import requests,json,time,base64,binascii,hashlib,os,sys,re
 from datetime import datetime
 from sendNotify import send

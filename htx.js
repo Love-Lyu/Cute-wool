@@ -1,12 +1,11 @@
 /*
-@随缘撸豆
+沪碳行 v1.0
 沪碳行app 自行百度下载   
 一天一毛数字人民币 小毛 
 抓取 htx.lcago.cn  body中的 token 和deviceCoding  
-多账号换行   也可以自建一个htx.txt放到和脚本一个文件夹内
-htx  'token#deviceCoding'
-cron 10 7,17 * * *  htx.js
-https://raw.githubusercontent.com/liuqi6968/-/main/htx.js
+变量名:export htx=token#deviceCoding' 多账号换行
+
+cron: 5 7,17 * * *
 */
 const $ = new Env("沪碳行");
 const fs = require('fs')

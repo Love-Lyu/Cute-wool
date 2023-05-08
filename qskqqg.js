@@ -1,28 +1,12 @@
 /*
-APP：全球购骑士特权
+全球购骑士卡 v1.0
 
-直接appstore搜索下载，方便的话可以微信扫下面图片二维码走邀请注册，谢谢
-https://raw.githubusercontent.com/leafTheFish/DeathNote/main/blackUnique.jpg
-
-定时为每小时一次，务必在0分到5分之间运行，目前每天大概1毛7
-提现需要关注微信公众号，在公众号里申请提现
-
-青龙：
 捉https://market.chuxingyouhui.com/promo-bargain-api/activity/mqq/api/indexTopInfo的包
 然后填在blackJSON里面，注意按照JSON格式填写。用青龙面板的环境变量或者外面用双引号的，字符串内需要用\"转义
-export blackJSON='{"black-token":"", "token":"", "User-Agent":"", "appId":""}'
+变量名:export blackJSON='{"black-token":"", "token":"", "User-Agent":"", "appId":""}'
 
-V2P，圈X：重写方法 -- 点击右下角【我的】-> 【每日签到赚现金】
-[task_local]
-#全球购骑士特权
-0 * * * * https://raw.githubusercontent.com/leafTheFish/DeathNote/main/blackUnique.js, tag=全球购骑士特权, enabled=true
-[rewrite_local]
-https://market.chuxingyouhui.com/promo-bargain-api/activity/mqq/api/indexTopInfo? url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/blackUnique.js
-[MITM]
-hostname = market.chuxingyouhui.com
-
+cron: 3 0-23 * * *
 */
-
 const $ = new Env('全球购骑士特权')
 const jsname = '全球购骑士特权'
 const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1

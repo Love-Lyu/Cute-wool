@@ -1,15 +1,10 @@
 /*
-@jzack
-
-天问科技-7日打卡【微信小程序】
-
+天问科技-7日打卡 v1.0
 赚钱天天乐 同一家得 满一元 提现秒到支付宝 【仅写了签到和查余额】后续补充提现
-
 抓包 taokeout.jutuike.com 域名header 里面XX-Token 的值 多账户 @ 或者 回车 分开 
+变量名: TWtoken
 
-数据填入 TWtoken 变量里面
-
-定时一天一次
+cron: 18 18 * * *
 */
 const $ = new Env("天问科技-7日打卡");
 let envSplitor = ['@', '\n']

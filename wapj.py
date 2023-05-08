@@ -1,6 +1,15 @@
-#吾爱破解-签到
-#抓取 https://www.52pojie.cn/forum.php 整段cookie
-#环境变量 wapj="cookie" 多账户 # 分割
+"""
+吾爱破解 v1.0
+
+任务：签到
+
+抓取 https://www.52pojie.cn/forum.php 整段cookie
+export wapj="" 多账户 # 分割
+
+cron: 5 0,9 * * *
+const $ = new Env("吾爱破解");
+"""
+
 import requests, os, sys
 from bs4 import BeautifulSoup
 from datetime import datetime

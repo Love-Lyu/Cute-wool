@@ -1,19 +1,12 @@
-/**
- * 得物签到 
- * cron 55 10 * * *  dewu_farm.js
- *
- * 22/11/29   浇水 签到 领取水滴 气泡水滴
- * ========= 青龙--配置文件 ===========
- * # 项目名称
- * export dwnc_data='token @ token'
- * 
- * 多账号用 换行 或 @ 分割
- * 抓包 xxx.xxx.xxx , 找到 token 即可
- * ====================================
- *   
- */
+/*
+得物签到 v1.0
 
+任务: 浇水 签到 领取水滴 气泡水滴
+export dwnc_data='token @ token'
+多账号用 换行 或 @ 分割
 
+cron 55 10 * * *
+*/
 
 const $ = new Env("得物签到");
 const ckName = "dwnc_data";

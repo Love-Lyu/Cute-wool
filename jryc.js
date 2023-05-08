@@ -14,14 +14,6 @@
 export jrycAccount="13888888888#123456
 63763e60yyyyyyyyxxxxxxxx"
 
-[task_local]
-#今日越城
-17 8-20/3 * * * https://raw.githubusercontent.com/leafTheFish/DeathNote/main/jryc.js, tag=今日越城, enabled=true
-[rewrite_local]
-https://vapp.tmuyun.com/api/user_mumber/account_detail url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/jryc.js
-[MITM]
-hostname = vapp.tmuyun.com
-
 cron: 17 8-20/3 * * *
 const $ = new Env("今日越城")
 */

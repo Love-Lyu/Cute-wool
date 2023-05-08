@@ -1,5 +1,14 @@
-# 变量名ksjsbck 多个用@或换行分割，需要完整cookies，青龙单容器快手完整cookies只能放63个。建议启用60个,否则会报错
-# 变量名ksjsb_code为助力码，其他CK均为其提供助力（获取方式-保存二维码-微信二维码转链接机器人-把短链放到浏览器访问转为长链-最后一组数字即为你的助力码）
+"""
+快手极速版-周周赚 v1.0
+
+任务：助力
+
+export ksjsbck='被助力的ck'
+export ksjsb_code="帮你助力的ck"
+
+cron: 16 8 * * *
+const $ = new Env("快手极速版-周周赚");
+"""
 
 import json
 import os

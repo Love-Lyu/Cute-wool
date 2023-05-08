@@ -1,13 +1,12 @@
 /*
-jzack
-
-掌上瓯海  一天600积分左右
-
-抓包 newsapi.wzrb.com.cn 域名 Authorization的值 填入 变量 swZS里面 多账户 @ 或者 回车分割
-
+掌上瓯海 v1.0
+一天600积分左右
+抓包 newsapi.wzrb.com.cn 域名 Authorization的值 填入 变量 swZS里面
+变量 export=swZS'' 多账户 @ 或者 回车分割
 变量示例 7557206663AD0927A8XXXXXXXX   旧版没问题则不需要更新   新版去掉Bearer 只要 Authorization的 Bearer后面的值
-
 一天运行1次    运行空白是在扫任务 不用管
+
+cron: 13 9,15 * * *
 */
 const $ = new Env("掌上瓯海");
 const envSplitor = ['\n','@','&']

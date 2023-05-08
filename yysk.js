@@ -1,14 +1,11 @@
 /*
-@肥皂 应用试客  每天一毛，八年老平台，胜在稳定吧。
+应用试客 v1.0
 shike.com 抓包的域名。。
 抓一个cookie：od的值 
 格式 od=aaaaaaaaaa@od=bbbbbbbbbbbb
 变量 yyskapp   对应账号数据
-一天跑个五次吧。。
-7.14 加入自动提现
-下载链接  https://wx.shike.com/i/UUqhExC
 
-
+cron: 25 1,4,9,13,16,21 * * *
 */
 const $ = new Env('应用试客');
 

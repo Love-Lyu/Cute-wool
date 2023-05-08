@@ -1,8 +1,15 @@
-#联通app抽奖 入口:联通app 搜索 阅读专区 进入话费派送中
-#环境 pycryptodome & pip3 install pycryptodome
-#环境变量 phone_num="手机号#UA"(必需) 多账户 & 分割 UNICOM_LOTTER="true"(选填)
-#phone_num 为你的手机号
-#UNICOM_LOTTER 默认自动抽奖, 若不需要 则添加环境变量值为 False
+"""
+联通阅读 v1.0
+
+依赖 pycryptodome
+活动入口: 联通app 搜索 阅读专区 进入话费派送中
+
+环境变量 phone_num="手机号#UA"(必需) 多账户 & 分割 UNICOM_LOTTER="true"(选填)
+export phone_num=""
+
+cron: 25 9,12 * * *
+const $ = new Env("联通阅读");
+"""
 
 from requests import post, get
 from time import sleep, time

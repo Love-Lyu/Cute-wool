@@ -1,3 +1,12 @@
+/*
+全球购骑士卡 v1.0
+
+捉https://market.chuxingyouhui.com/promo-bargain-api/activity/mqq/api/indexTopInfo的包
+然后填在blackJSON2里面，注意按照JSON格式填写。用青龙面板的环境变量或者外面用双引号的，字符串内需要用\"转义
+变量名:export blackJSON2='{"black-token":"", "token":"", "User-Agent":"", "appId":""}'
+
+cron: 3 0-23 * * *
+*/
 const $ = new Env('全球购骑士卡')
 const jsname = '全球购骑士特权'
 const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1

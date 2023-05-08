@@ -1,6 +1,14 @@
-#活动入口: 某通app首页-5g新通信-某通畅游
-#环境变量 UNICOM_GAME_ACCOUNT_INFO 格式 某通手机号#appid#token_online
+"""
+联通畅游 v1.0
 
+活动入口: 某通app首页-5g新通信-某通畅游
+
+格式 某通手机号#appid#token_online
+export UNICOM_GAME_ACCOUNT_INFO=""
+
+cron: 25 8,10 * * *
+const $ = new Env("联通畅游");
+"""
 
 from time import sleep
 from requests import post, get

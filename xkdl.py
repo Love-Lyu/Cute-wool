@@ -1,5 +1,14 @@
-#星空代理-签到
-#环境变量 xingkong="账户1@密码" 多账户 & 分割
+"""
+星空代理 v1.0
+
+任务：签到
+
+export xingkong="账户1@密码" 多账户 & 分割
+
+cron: 5 0,9 * * *
+const $ = new Env("星空代理");
+"""
+
 import os
 import re
 from datetime import datetime

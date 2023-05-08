@@ -12,17 +12,6 @@ ksAggressive -- 选填，最大化提现，默认开启，要关闭就填0
 
 定时一天10次，最好改掉默认时间，不然太多人同一时间跑
 
-重写：
-[task_local]
-#快手
-22 10-20 * * * https://raw.githubusercontent.com/leafTheFish/DeathNote/main/ks.js, tag=快手, enabled=true
-[rewrite_local]
-appsupport/yoda/biz/info url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/ks.js
-ksapp/client/package/renew url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/ks.js
-[MITM]
-hostname = api.kuaisho*.com
-hostname = open.kuaisho*.com
-
 cron: 22 10-20 * * *
 const $ = new Env("快手");
 */
