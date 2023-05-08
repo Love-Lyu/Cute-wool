@@ -1,6 +1,13 @@
+/*
+58同城 v1.0
 
+手动捉包把PPU=UID=xxxx&UN=yyyy&...填到wbtcCookie里，多账号换行隔开
+注意前面有个PPU=，捉包只有UID=xxx的话手动加上
+自定义UA：填到wbtcUA里，不填默认IOS15的UA
 
+cron: 5 7-12 * * *
 const $ = new Env("58同城")
+*/
 const jsname = '58同城'
 const logDebug = 0
 
