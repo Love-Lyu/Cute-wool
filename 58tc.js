@@ -1,17 +1,12 @@
 /*
-美团 v3.06
+58同城 v1.0
 
-美团V3仅支持青龙等nodejs环境, 不支持圈X
-自动领券和完成一些活动任务
+手动捉包把PPU=UID=xxxx&UN=yyyy&...填到wbtcCookie里，多账号换行隔开
+注意前面有个PPU=，捉包只有UID=xxx的话手动加上
+自定义UA：填到wbtcUA里，不填默认IOS15的UA
+export wbtcCookie=\"\"
 
-APP每日赚钱: 默认会每日自动随机, 要关闭随机提现的话设置变量 meituanAutoWithdraw 为 false
-export meituanAutoWithdraw="false"
-关闭自动提现可以存金币到50元余额再提现, 但是50元提现会审核2天, 可能会黑
-
-自行捉包把meituan.com里面的token(一般在请求头里)填到变量 meituanCookie 中, 多账号换行或&或@隔开
-export meituanCookie="AgGZIgsYHyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-cron: 2 0,7,11,17,21 * * *
+cron: 5 7-12 * * *
 */
 const $ = new Env("58同城")
 const jsname = '58同城'
