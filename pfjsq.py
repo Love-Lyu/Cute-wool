@@ -3,7 +3,7 @@
 
 任务：签到 刷视频
 
-cookie填到变量 pfjsq 中
+cookie填到变量 pfjsq 中, 多账户&间隔
 export pfjsq=""
 
 cron: 16 9,14 * * *
@@ -16,12 +16,9 @@ import os
 import sys
 
 class PuffAccelerator:
-    def __init__(self):
+    def __init__(self, pfjsq):
         # 检测账户变量
-        self.pfjsq = os.environ.get("pfjsq")
-        if not self.pfjsq:
-            print("⚠️未发现有效cookie,退出程序!")
-            sys.exit()
+        self.pfjsq = pfjsq
 
         # 授权密钥
         self.headers = {
@@ -122,7 +119,6 @@ class PuffAccelerator:
 
     # 主程序
     def main(self):
-        print('🔔泡芙加速器 | 开始')
         # 任务列表
         tasks = [
             ("每日签到", self.get_pfjsq_check),
@@ -143,5 +139,14 @@ class PuffAccelerator:
             time.sleep(5)
 
 if __name__ == '__main__':
-    paofujiasu_client = PuffAccelerator()
-    paofujiasu_client.main()
+    print('🔔泡芙加速器 | 开始')
+    #检测账户变量
+    pfjsq = os.environ.get("pfjsq") 
+    if not pfjsq or "&" not in pfjsq:
+        sys.exit("⚠️未发现有效账号,退出程序!") 
+    #分割账户
+    accounts = pfjsq.split("&")
+    # 遍历账户列表 | 为每个账户创建一个类实例并执行任务
+    for account in accounts:
+        paofujiasu_client = PuffAccelerator(account)
+        paofujiasu_client.main()
