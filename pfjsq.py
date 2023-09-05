@@ -130,6 +130,9 @@ class PuffAccelerator:
         ]
         # 执行任务
         for task_name, task_function in tasks:
+            if self.get_pfjsq_user() == '⚠️cookie过期':
+                print(self.get_pfjsq_user())
+                break
             print(f'🔁{self.get_pfjsq_user()} | 正在执行任务 | {task_name}')
             result = task_function()
             if result == '⚠️cookie过期':
@@ -137,15 +140,19 @@ class PuffAccelerator:
                 break
             print(result)
             time.sleep(5)
+        print('*****************************************')
 
 if __name__ == '__main__':
     print('🔔泡芙加速器 | 开始')
     #检测账户变量
     pfjsq = os.environ.get("pfjsq") 
-    if not pfjsq or "&" not in pfjsq:
+    if not pfjsq:
         sys.exit("⚠️未发现有效账号,退出程序!") 
     #分割账户
-    accounts = pfjsq.split("&")
+    if "&" not in pfjsq:
+        accounts = [pfjsq]
+    else:
+        accounts = pfjsq.split("&")
     # 遍历账户列表 | 为每个账户创建一个类实例并执行任务
     for account in accounts:
         paofujiasu_client = PuffAccelerator(account)
