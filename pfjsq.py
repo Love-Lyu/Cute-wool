@@ -118,7 +118,7 @@ class PuffAccelerator:
             return '⚠️cookie过期'
 
     # 主程序
-    def main(self):
+    def run(self):
         # 任务列表
         tasks = [
             ("每日签到", self.get_pfjsq_check),
@@ -156,4 +156,4 @@ if __name__ == '__main__':
     # 遍历账户列表 | 为每个账户创建一个类实例并执行任务
     for account in accounts:
         paofujiasu_client = PuffAccelerator(account)
-        paofujiasu_client.main()
+        paofujiasu_client.run()
