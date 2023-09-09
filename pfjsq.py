@@ -92,6 +92,8 @@ class PuffAccelerator:
             data = response.json()
             if data['info'] == '每天最多签到1次哦~':
                 return '✅今日已签到'
+            elif data['info'] == '最多拥有5个金币哦~':
+                return '⚠️金币已上限'
             else:
                 return '⚠️cookie过期'
         else:
@@ -135,7 +137,7 @@ class PuffAccelerator:
                 break
             print(f'🔁{self.get_pfjsq_user()} | 正在执行任务 | {task_name}')
             result = task_function()
-            if result == '⚠️cookie过期':
+            if result == '⚠️cookie过期' or result == '⚠️金币已上限':
                 print(result)
                 break
             print(result)
