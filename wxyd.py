@@ -7,7 +7,7 @@ cookie填到变量 wxyd 中, 多账户&间隔
 export wxyd=""
 
 cron: 36 8-18 * * *
-const $ = new Env("泡芙加速器");
+const $ = new Env("微信阅读");
 """
 
 import time
