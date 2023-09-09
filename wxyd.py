@@ -126,7 +126,7 @@ class WXYD():
           url = f'http://2478987.jilixczlz.ix47965in5.cloud/read/info?time={ts}&sign={sign}'
           response = self.sec.get(url)
           data = response.json()
-          print(f'今日已经阅读了{data.get("data").get("read")}篇文章 | 账户余额{data.get("data").get("remain")}金币')
+          print(f'今日已经阅读了{data.get("data").get("read")}篇文章 | 账户余额{self.remain/10000}元')
       except:
           print(response.text)
   
