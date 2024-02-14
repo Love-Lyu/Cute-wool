@@ -4,7 +4,7 @@
 变量 token#openid#l_id#备注, 多账户换行  
 export bslycj=""
 
-cron: 36 8-18 * * *
+cron: 36 13,18 * * *
 const $ = new Env("百事乐元");
 """
 
