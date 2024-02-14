@@ -55,8 +55,7 @@ try:
                 'type': 'login',
             }
 
-            response = requests.post('http://www.xkdaili.com/tools/submit_ajax.ashx', params=params, cookies=cookies,
-                                     headers=headers, data=data)
+            response = requests.post('https://www.xkdaili.com/tools/submit_ajax.ashx?action=user_receive_point', cookies=cookies, headers=headers, data=data)
             txt = response.json()
             print("星空签到 ", txt['msg'])
             msg += f"账户 {up[0]} 星空签到 {txt['msg']}\n"
