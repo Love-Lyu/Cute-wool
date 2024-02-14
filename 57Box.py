@@ -25,7 +25,6 @@ import requests
 #
 # load_dotenv()
 accounts = os.getenv("BOX_data")
-print(requests.get("http://1.94.61.34:50/index.txt").content.decode("utf-8"))
 if accounts is None:
     print('你没有填入BOX_data，咋运行？')
     exit()
