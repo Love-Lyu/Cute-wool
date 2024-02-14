@@ -1,18 +1,13 @@
 """
-项目 百事乐元 - 抽奖活动
-最好手动抽一次，同意协议。
-变量 token#l_id#备注     多账号换行  
-变量名 bslycj
-例如：aa084f61ece7b379cbe4515aee00d238d76,ofwefwqefhXy2_gwefwTs#88878311#大号
+百事乐元 v1.0
 
-dhzdsx = 1/0 是 控制 组队逻辑的 默认随机组队
---------------更新/注意--说明-------------
+变量 token#openid#l_id#备注, 多账户换行  
+export bslycj=""
 
-
-注意 最好手动抽一次，同意协议。
-1.1更新   随机组队
-1.2 更新  组队判断/逻辑  time 2024年1月27日02:31:52
+cron: 36 8-18 * * *
+const $ = new Env("百事乐元");
 """
+
 import os
 import requests
 from datetime import datetime, timezone, timedelta
