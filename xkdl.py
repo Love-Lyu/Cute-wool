@@ -41,7 +41,7 @@ try:
             "remember": 0
         }
         try:
-            aa = requests.post("http://www.xkdaili.com/tools/submit_ajax.ashx?action=user_login&site_id=1", headers=headers,
+            aa = requests.post("https://www.xkdaili.com/tools/submit_ajax.ashx?action=user_login&site_id=1", headers=headers,
                                data=data)
             ck = aa.cookies
             asp = re.findall(r"ASP\.NET_SessionId=(\w+)", str(ck))
