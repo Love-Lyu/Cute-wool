@@ -1,7 +1,6 @@
 /*
 看余杭 v1.0
 
-抓包域名: fijdzpur.act.tmuact.com 或者 wallet.act.tmuact.com
 变量 手机号#登陆密码#deviceId, 多账户换行 
 export kyhck=""
 
